@@ -1,5 +1,4 @@
 <script>
-  // import { mapGetters, mapState } from 'vuex'
   import { createHelpers } from 'vuex-map-fields'
   import TextInput from '@/components/Shared/TextInput'
   import ThvButton from '@/components/Shared/Button'
@@ -15,30 +14,12 @@
       TextInput,
       ThvButton
     },
-    // data () {
-    //   return {
-    //     name: ''
-    //   }
-    // },
-    // computed: {
-    //   name: {
-    //     get () {
-    //       return this.$store.state.survey.firstName
-    //     },
-    //     set (value) {
-    //       this.$store.commit('updateFirstName', value)
-    //     }
-    //   }
-    // },
     computed: {
       ...mapFields([
         'name',
       ])
     },
     methods: {
-      // updateFirstName (e) {
-      //   this.$store.commit('updateFirstName', e.target.value)
-      // },
       submit () {
         this.$router.push('/goals')
       }

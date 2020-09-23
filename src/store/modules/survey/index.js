@@ -9,7 +9,7 @@ const { getSurveyField, updateSurveyField } = createHelpers({
   getterType: 'getSurveyField',
   mutationType: 'updateSurveyField'
 })
-// const merged = {...obj1, ...obj2}
+
 export default {
   namespaced: true,
   state: state(),
