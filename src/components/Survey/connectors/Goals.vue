@@ -1,6 +1,12 @@
 <script>
+  import { createHelpers } from 'vuex-map-fields'
   import CheckButton from '@/components/Survey/components/CheckButton'
   import ThvButton from '@/components/Shared/Button'
+
+  const { mapFields } = createHelpers({
+    getterType: 'survey/getSurveyField',
+    mutationType: 'survey/updateSurveyField',
+  });
 
   export default {
     name: 'Goals',
@@ -9,10 +15,15 @@
       CheckButton
     },
     props: {
-      name: {
-        type: String,
-        default: ''
-      }
+      // name: {
+      //   type: String,
+      //   default: ''
+      // }
+    },
+    computed: {
+      ...mapFields([
+        'name',
+      ])
     },
     data () {
       return {
