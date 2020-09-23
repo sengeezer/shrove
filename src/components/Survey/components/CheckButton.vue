@@ -21,7 +21,8 @@
 <template lang='pug'>
   .check-button(
     :class="{ 'check-button--selected': selected }",
-    tabindex='0'
+    tabindex='0',
+    value=''
   ) {{ text }}
 
 </template>

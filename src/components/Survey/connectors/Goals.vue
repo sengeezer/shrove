@@ -61,6 +61,7 @@
           v-for='(goal, key) in goals',
           :key='key',
           :text='goal.name'
+          :value='goal.name'
         )
 
         .grid-x.button-container
