@@ -55,6 +55,9 @@
       },
       back () {
         this.$router.push('/name')
+      },
+      selected () {
+        console.log('selected')
       }
     }
   }
@@ -64,14 +67,14 @@
   .grid-x.grid-x-margin
     .cell.small-12.medium-6.medium-offset-3
       .survey-questions__goals.align-center
-        h1 Nice to meet you {{ name }}. What would you like to focus on?
+        h1 Nice to meet you, {{ name }}. What would you like to focus on?
         p.body--large.question-description Choose up to four
         .spacer.sp__top--sm
 
         check-button(
           v-for='(goal, key) in goals',
           :key='key',
-          :text='goal.name'
+          :text='goal.name',
           :value='goal.name'
         )
 
