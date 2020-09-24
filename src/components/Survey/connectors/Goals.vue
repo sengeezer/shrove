@@ -23,31 +23,11 @@
     computed: {
       ...mapFields([
         'name',
+        'goals'
       ])
     },
     data () {
-      return {
-        goals: {
-          improveEnergy: {
-            name: 'Energy'
-          },
-          improveFitness: {
-            name: 'Fitness'
-          },
-          improveLongTermHealth: {
-            name: 'Long-term health'
-          },
-          improveMood: {
-            name: 'Mood'
-          },
-          improveSleep: {
-            name: 'Sleep'
-          },
-          improveWeight: {
-            name: 'Weight'
-          }
-        }
-      }
+      return {}
     },
     methods: {
       submit () {
