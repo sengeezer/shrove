@@ -5,8 +5,8 @@
 
   const { mapFields } = createHelpers({
     getterType: 'survey/getSurveyField',
-    mutationType: 'survey/updateSurveyField',
-  });
+    mutationType: 'survey/updateSurveyField'
+  })
 
   export default {
     name: 'Goals',
@@ -36,8 +36,9 @@
       back () {
         this.$router.push('/name')
       },
-      selected () {
-        console.log('selected')
+      toggleSelected (key) {
+        console.log('selected:', key)
+        this.$store.commit('survey/updateGoalState', key)
       }
     }
   }
@@ -56,6 +57,8 @@
           :key='key',
           :text='goal.name',
           :value='goal.name'
+          :selected='goal.isSelected'
+          @click.native='toggleSelected(key)'
         )
 
         .grid-x.button-container

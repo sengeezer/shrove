@@ -3,27 +3,27 @@ const state = () => ({
   goals: {
     improveEnergy: {
       name: 'Energy',
-      selected: false
+      isSelected: false
     },
     improveFitness: {
       name: 'Fitness',
-      selected: false
+      isSelected: false
     },
     improveLongTermHealth: {
       name: 'Long-term health',
-      selected: false
+      isSelected: false
     },
     improveMood: {
       name: 'Mood',
-      selected: false
+      isSelected: false
     },
     improveSleep: {
       name: 'Sleep',
-      selected: false
+      isSelected: false
     },
     improveWeight: {
       name: 'Weight',
-      selected: false
+      isSelected: false
     }
   }
 })

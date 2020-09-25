@@ -14,13 +14,25 @@
         type: Boolean,
         default: false
       }
-    },
-    methods: {
-      toggleSelected: function () {
-        this.selected = !this.selected
-      }
     }
+    // methods: {
+    //   toggleSelected: function () {
+    //     this.isitSelected === this.selected ? this.isitSelected = this.selected: this.isitSelected = !this.isitSelected
+    //   }
+    // },
+    // computed: {
+    //   isSelecteds: function(propsData) {
+    //     return propsData.isSelected === this.selected
+    //   }
+    // }
+    // computed: {
+    //   isitSelected: {
+    //     get: function() { return this.$attrs.isSelected },
+    //     set: function(val) { this.$attrs.isSelected = val }
+    //   }
+    // }
   }
+  // @click='toggleSelected()'
 </script>
 
 <template lang='pug'>
@@ -28,7 +40,6 @@
     :class="{ 'check-button--selected': selected }",
     tabindex='0',
     value=''
-    @click='toggleSelected()'
   ) {{ text }}
 
 </template>
