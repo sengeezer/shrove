@@ -1,6 +1,12 @@
 <script>
+  import { createHelpers } from 'vuex-map-fields'
   import CheckButton from '@/components/Survey/components/CheckButton'
   import ThvButton from '@/components/Shared/Button'
+
+  const { mapFields } = createHelpers({
+    getterType: 'survey/getSurveyField',
+    mutationType: 'survey/updateSurveyField'
+  })
 
   export default {
     name: 'Gender',
@@ -8,16 +14,14 @@
       ThvButton,
       CheckButton
     },
+    computed: {
+      ...mapFields([
+        'genders'
+      ])
+    },
     data () {
       return {
-        genders: {
-          male: {
-            name: 'Male'
-          },
-          female: {
-            name: 'Female'
-          }
-        }
+        maxGenders: 1
       }
     },
     methods: {
@@ -26,6 +30,19 @@
       },
       back () {
         this.$router.push('/dob')
+      },
+      toggleSelected (key) {
+        if (this.$store.state.survey.gendersSelected.numberSelected <= this.maxGenders - 1) {
+          this.$store.commit('survey/updateGenderState', key)
+
+          if (this.$store.state.survey.genders[key].isSelected) {
+            this.$store.commit('survey/addGender', key)
+          } else {
+            this.$store.commit('survey/removeGender', key)
+          }
+
+          // console.log('selected:', key, this.$store.state.survey.gendersSelected.numberSelected, this.maxGenders)
+        }
       }
     }
   }
@@ -43,7 +60,10 @@
         check-button(
           v-for='(gender, key) in genders',
           :key='key',
-          :text='gender.name'
+          :text='gender.name',
+          :value='gender.name'
+          :selected='gender.isSelected'
+          @click.native='toggleSelected(key)'
         )
 
         .grid-x.button-container

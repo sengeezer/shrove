@@ -64,7 +64,21 @@ const state = () => ({
     keys: [],
     numberSelected: 0
   },
-  dob: null
+  dob: null,
+  genders: {
+    male: {
+      name: 'Male',
+      isSelected: false
+    },
+    female: {
+      name: 'Female',
+      isSelected: false
+    }
+  },
+  gendersSelected: {
+    keys: [],
+    numberSelected: 0
+  }
 })
 
 export default state

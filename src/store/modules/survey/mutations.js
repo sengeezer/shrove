@@ -23,5 +23,16 @@ export default {
   },
   updateDob (state, val) {
     state.dob = val
+  },
+  updateGenderState (state, key) {
+    state.genders[key].isSelected = !state.genders[key].isSelected
+  },
+  addGender (state, key) {
+    state.gendersSelected.numberSelected++
+    state.gendersSelected.keys.push(key)
+  },
+  removeGender (state, key) {
+    state.gendersSelected.numberSelected--
+    state.gendersSelected.keys = state.gendersSelected.keys.filter(el => el !== key)
   }
 }
