@@ -9,5 +9,16 @@ export default {
   removeGoal (state, key) {
     state.goalsSelected.numberSelected--
     state.goalsSelected.keys = state.goalsSelected.keys.filter(el => el !== key)
+  },
+  updateDietState (state, key) {
+    state.diets[key].isSelected = !state.diets[key].isSelected
+  },
+  addDiet (state, key) {
+    state.dietsSelected.numberSelected++
+    state.dietsSelected.keys.push(key)
+  },
+  removeDiet (state, key) {
+    state.dietsSelected.numberSelected--
+    state.dietsSelected.keys = state.dietsSelected.keys.filter(el => el !== key)
   }
 }

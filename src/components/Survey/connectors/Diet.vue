@@ -1,6 +1,12 @@
 <script>
+  import { createHelpers } from 'vuex-map-fields'
   import CheckButton from '@/components/Survey/components/CheckButton'
   import ThvButton from '@/components/Shared/Button'
+
+  const { mapFields } = createHelpers({
+    getterType: 'survey/getSurveyField',
+    mutationType: 'survey/updateSurveyField'
+  })
 
   export default {
     name: 'Diet',
@@ -8,31 +14,16 @@
       ThvButton,
       CheckButton
     },
+    computed: {
+      ...mapFields([
+        'name',
+        'diets',
+        'dietsSelected'
+      ])
+    },
     data () {
       return {
-        diets: {
-          no: {
-            name: 'No'
-          },
-          coeliac: {
-            name: 'Coeliac'
-          },
-          lowCarbHighFat: {
-            name: 'Low-carb, high-fat'
-          },
-          paleo: {
-            name: 'Paleo'
-          },
-          pescatarian: {
-            name: 'Pescatarian'
-          },
-          plantBased: {
-            name: 'Plant-based'
-          },
-          other: {
-            name: 'Other'
-          }
-        }
+        maxDiets: 1
       }
     },
     methods: {
@@ -41,6 +32,19 @@
       },
       back () {
         this.$router.push('/goals')
+      },
+      toggleSelected (key) {
+        if (this.$store.state.survey.dietsSelected.numberSelected <= this.maxDiets - 1) {
+          this.$store.commit('survey/updateDietState', key)
+
+          if (this.$store.state.survey.diets[key].isSelected) {
+            this.$store.commit('survey/addDiet', key)
+          } else {
+            this.$store.commit('survey/removeDiet', key)
+          }
+
+          // console.log('selected:', key, this.$store.state.survey.dietsSelected.numberSelected, this.maxDiets)
+        }
       }
     }
   }
@@ -57,6 +61,9 @@
           v-for='(diet, key) in diets',
           :key='key',
           :text='diet.name'
+          :value='diet.name'
+          :selected='diet.isSelected'
+          @click.native='toggleSelected(key)'
         )
 
         .grid-x.button-container
