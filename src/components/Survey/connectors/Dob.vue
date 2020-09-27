@@ -1,6 +1,12 @@
 <script>
+  import { createHelpers } from 'vuex-map-fields'
   import ThvButton from '@/components/Shared/Button'
   import DobInput from '@/components/Shared/DobInput'
+
+  const { mapFields } = createHelpers({
+    getterType: 'survey/getSurveyField',
+    mutationType: 'survey/updateSurveyField'
+  })
 
   export default {
     name: 'Dob',
@@ -8,12 +14,15 @@
       DobInput,
       ThvButton
     },
-    data () {
-      return {
-        dob: null
-      }
-    },
+    // data () {
+    //   return {
+    //     dob: null
+    //   }
+    // },
     computed: {
+      ...mapFields([
+        'dob'
+      ]),
       disableNext () {
         let under18 = this.$refs.DobInput && this.$refs.DobInput.ageError
         return this.dob === '' || this.errors.items.length > 0 || under18 === true
@@ -31,7 +40,7 @@
         this.$validator.reset()
         this.$validator.validate().then(result => {
           if (result && !this.feedback) {
-            // SUGGESTION: could save DOB here is it is now assumed valid
+            this.$store.commit('survey/updateDob', this.dob)
             this.$router.push('/gender')
           }
         })
@@ -56,7 +65,7 @@
           ref='DobInput'
           v-validate="'required'",
           data-vv-value-path="dob",
-          :value='dob',
+          v-model='dob',
           name='dob',
           :error='errors.has("dob")',
           minAge='18',
@@ -73,6 +82,7 @@
             thv-button(
               element='button',
               size='large'
+              
               @click='submit'
             ) Next
 </template>

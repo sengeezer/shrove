@@ -63,7 +63,8 @@ const state = () => ({
   dietsSelected: {
     keys: [],
     numberSelected: 0
-  }
+  },
+  dob: ''
 })
 
 export default state

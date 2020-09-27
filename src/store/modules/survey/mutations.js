@@ -20,5 +20,8 @@ export default {
   removeDiet (state, key) {
     state.dietsSelected.numberSelected--
     state.dietsSelected.keys = state.dietsSelected.keys.filter(el => el !== key)
+  },
+  updateDob (state, val) {
+    state.dob = val
   }
 }
