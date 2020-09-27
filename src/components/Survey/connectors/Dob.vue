@@ -8,6 +8,11 @@
       DobInput,
       ThvButton
     },
+    data () {
+      return {
+        dob: null
+      }
+    },
     computed: {
       disableNext () {
         let under18 = this.$refs.DobInput && this.$refs.DobInput.ageError
