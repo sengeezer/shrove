@@ -64,7 +64,7 @@ const state = () => ({
     keys: [],
     numberSelected: 0
   },
-  dob: ''
+  dob: null
 })
 
 export default state

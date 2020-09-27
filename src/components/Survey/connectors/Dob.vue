@@ -14,11 +14,6 @@
       DobInput,
       ThvButton
     },
-    // data () {
-    //   return {
-    //     dob: null
-    //   }
-    // },
     computed: {
       ...mapFields([
         'dob'
@@ -63,7 +58,6 @@
 
         dob-input.align-center.survey-input(
           ref='DobInput'
-          v-validate="'required'",
           data-vv-value-path="dob",
           v-model='dob',
           name='dob',
@@ -82,7 +76,6 @@
             thv-button(
               element='button',
               size='large'
-              
               @click='submit'
             ) Next
 </template>
