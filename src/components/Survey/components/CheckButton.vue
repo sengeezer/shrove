@@ -15,24 +15,7 @@
         default: false
       }
     }
-    // methods: {
-    //   toggleSelected: function () {
-    //     this.isitSelected === this.selected ? this.isitSelected = this.selected: this.isitSelected = !this.isitSelected
-    //   }
-    // },
-    // computed: {
-    //   isSelecteds: function(propsData) {
-    //     return propsData.isSelected === this.selected
-    //   }
-    // }
-    // computed: {
-    //   isitSelected: {
-    //     get: function() { return this.$attrs.isSelected },
-    //     set: function(val) { this.$attrs.isSelected = val }
-    //   }
-    // }
   }
-  // @click='toggleSelected()'
 </script>
 
 <template lang='pug'>
@@ -52,7 +35,6 @@
     background-color: #ffffff;
     font-size: 1.125rem;
     line-height: 1.5;
-    // padding: 0.938rem 1.25rem;
     padding: 2.125rem;
     margin-bottom: 0.938rem;
     color: #3d4250;

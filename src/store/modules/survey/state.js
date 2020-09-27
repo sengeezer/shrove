@@ -25,6 +25,10 @@ const state = () => ({
       name: 'Weight',
       isSelected: false
     }
+  },
+  goalsSelected: {
+    keys: [],
+    numberSelected: 0
   }
 })
 

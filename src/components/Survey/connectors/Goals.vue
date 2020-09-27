@@ -14,20 +14,17 @@
       ThvButton,
       CheckButton
     },
-    props: {
-      // name: {
-      //   type: String,
-      //   default: ''
-      // }
-    },
     computed: {
       ...mapFields([
         'name',
-        'goals'
+        'goals',
+        'goalsSelected'
       ])
     },
     data () {
-      return {}
+      return {
+        maxGoals: 4
+      }
     },
     methods: {
       submit () {
@@ -37,8 +34,17 @@
         this.$router.push('/name')
       },
       toggleSelected (key) {
-        console.log('selected:', key)
-        this.$store.commit('survey/updateGoalState', key)
+        if (this.$store.state.survey.goalsSelected.numberSelected <= this.maxGoals - 1) {
+          this.$store.commit('survey/updateGoalState', key)
+
+          if (this.$store.state.survey.goals[key].isSelected) {
+            this.$store.commit('survey/addGoal', key)
+          } else {
+            this.$store.commit('survey/removeGoal', key)
+          }
+
+          // console.log('selected:', key, this.$store.state.survey.goalsSelected.numberSelected, this.maxGoals)
+        }
       }
     }
   }
