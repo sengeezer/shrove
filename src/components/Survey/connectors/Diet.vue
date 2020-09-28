@@ -42,8 +42,6 @@
           } else {
             this.$store.commit('survey/removeDiet', key)
           }
-
-          // console.log('selected:', key, this.$store.state.survey.dietsSelected.numberSelected, this.maxDiets)
         }
       }
     }

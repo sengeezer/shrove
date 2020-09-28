@@ -1,11 +1,13 @@
 # Notes
 
-## Install errors
+## Next steps / TBD
 
-On Node 12.13.1:
+With more time, I would have addressed the following:
 
-```
-npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.4 (node_modules/fsevents):
-npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.4 install: `node install`
-npm WARN optional SKIPPING OPTIONAL DEPENDENCY: Exit status 1
-```
+* CheckButtons: 
+  * Fix limiter logic so buttons can be unselected
+  * Inform user of limits
+* Complete form validation
+* Unit tests
+* ProgressBar
+* Step transitions: I would probably use a carousel type effect where stages slide left / right as the user goes forward / backward.

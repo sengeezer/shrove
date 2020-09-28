@@ -40,8 +40,6 @@
           } else {
             this.$store.commit('survey/removeGender', key)
           }
-
-          // console.log('selected:', key, this.$store.state.survey.gendersSelected.numberSelected, this.maxGenders)
         }
       }
     }
